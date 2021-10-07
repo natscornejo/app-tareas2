@@ -5,7 +5,7 @@
 
     <div class="row justify-content-center">
 
-        <div class="col-md-8">
+        <div class="col-md-12">
 
             <div class="card">
 
@@ -35,13 +35,21 @@
                                 <td>{{ $task->description }}</td>
                                 <td>
                                     @if($task->is_complete == false)
-                                        <span class="badge badge-warning"> No disponible</span>
-                                    </td>
+                                        <span class="badge badge-warning">Pendiente</span>
                                     @else
-                                    <td>
-                                        <a href="" class="btn btn-outline-success btn-sm">Completar</a>
-                                    </td>
+                                        <span class="badge badge-success">Completada</span>
                                     @endif
+                                </td>
+                                <td>
+                                    <a href="{{ route('tareas.edit', $task->id)}}" class="btn btn-outline-primary btn-sm">Editar</a>
+                                    <a href="" class="btn btn-outline-danger btn-sm">Eliminar</a>
+                                    @if($task->is_complete == false)
+                                        <a href="{{ route('tareas.status', $task->id)}}" class="btn btn-outline-success btn-sm">Completar</a>
+                                    @endif
+
+                                    
+                                </td>
+                                
                             </tr>
 
                             @endforeach

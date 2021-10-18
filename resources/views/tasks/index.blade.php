@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <a href="{{ route('tareas.create')}}" class="btn btn-dark mb-3">Crear tarea</a>
 
-                	<table class="table">
+                	<table class="table table-sm">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -41,10 +41,21 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ route('tareas.edit', $task->id)}}" class="btn btn-outline-primary btn-sm">Editar</a>
-                                    <a href="" class="btn btn-outline-danger btn-sm">Eliminar</a>
+
+                                    <form method="POST" action="{{ route ('tareas.destroy', $task->id) }}">
+                                        {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                                <button type="submit" class="btn btn-outline-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                    <ion-icon name="trash-bin-outline"></ion-icon>
+                                                </button>
+                                    </form>
+
+                                    <a href="{{ route('tareas.edit', $task->id)}}" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Edit">
+                                        <ion-icon name="create-outline"></ion-icon>
+                                    </a>
+
                                     @if($task->is_complete == false)
-                                        <a href="{{ route('tareas.status', $task->id)}}" class="btn btn-outline-success btn-sm">Completar</a>
+                                        <a href="{{ route('tareas.status', $task->id)}}" class="btn btn-outline-success btn-sm" data-toggle="tooltip" data-placement="top" title="Completar"><ion-icon name="checkmark-outline"></ion-icon></ion-icon></a>
                                     @endif
 
                                     

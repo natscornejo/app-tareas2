@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
 
     <div class="row justify-content-center">
@@ -42,9 +43,10 @@
                                 </td>
                                 <td>
 
-                                    <form method="POST" action="{{ route ('tareas.destroy', $task->id) }}">
+                                    <form method="POST" style="display: inline-block;" action="{{ route ('tareas.destroy', $task->id) }}">
                                         {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
+                                            
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Delete">
                                                     <ion-icon name="trash-bin-outline"></ion-icon>
                                                 </button>
@@ -72,4 +74,5 @@
         </div>
     </div>
 </div>
+
 @endsection

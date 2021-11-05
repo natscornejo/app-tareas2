@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Session;
 
 use App\Models\Project;
+use App\Models\User;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -12,9 +14,13 @@ class ProjectController extends Controller
 
     public function index()
     {
-        $projects = Project::all();
+        $projects   = Project::all();
+        $users      = User::all();
+        $tasks      = Task::all();
 
-        return view('projects.index')->with('projects', $projects);
+        //return view('projects.index')->with('projects', $projects);
+
+        return view('projects.index')->with('projects', $projects)->with('users', $users)->with('tasks', $tasks);
     }
 
 
@@ -28,18 +34,24 @@ class ProjectController extends Controller
     {
         
         $project = new Project;
+        $tasks = Task::all();
 
         $project->name = $request->name;
         $project->status = $request->status;
         $project->description = $request->description;
+
+        $users = $request->user_id;
+        $project->users()->sync($request->user_id);
         
         $project->save();
+
         
         //Session:: flash ('nombre del mensaje', 'mensaje');
         /*Session:: flash ('success', ' successfully');
         */
 
         return redirect()->back();
+        return redirect()->back()->with('users', $users);
     }
 
 

@@ -9,17 +9,17 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    
 </head>
 
 <body>
@@ -27,7 +27,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    App de Tareas
+                    <ion-icon name="planet-outline"></ion-icon> iTasks
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -39,15 +39,15 @@
                     <ul class="navbar-nav mr-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">Home</a>
+                            <a class="nav-link" href="{{ route('home') }}"><ion-icon name="home-outline"></ion-icon> Home </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('proyectos.index') }}">Projects</a>
+                            <a class="nav-link" href="{{ route('proyectos.index') }}"><ion-icon name="clipboard-outline"></ion-icon>  Projects </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('tareas.index') }}">Tareas</a>
+                            <a class="nav-link" href="{{ route('tareas.index') }}"><ion-icon name="document-text-outline"></ion-icon>  Tasks </a>
                         </li>
 
                     </ul>
@@ -58,26 +58,26 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }} <ion-icon name="person-circle"></ion-icon></a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }} <ion-icon name="person-add"></ion-icon></a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    {{ Auth::user()->name }} <ion-icon name="person-circle"></ion-icon>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Logout') }} <ion-icon name="log-out-outline"></ion-icon>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

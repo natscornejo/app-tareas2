@@ -41,4 +41,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    //Relacion muchos a muchos
+    public function projects(){
+
+        return $this->belongsToMany(Project::class, 'project_user', 'user_id', 'project_id');
+
+    }
+
+
+    public function tasks(){
+
+        return $this->hasOne(Task::class, 'id', 'user_id');
+
+    }
 }

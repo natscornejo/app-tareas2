@@ -9,15 +9,15 @@
         <div class="col-md-12 text-right">
 
                 <div class="card-body">
-                    <a href="" class="btn btn-dark mb-3" data-toggle="modal" data-target="#ProjectModal">NUEVO PROYECTO</a>
+                    <a href="" class="btn btn-dark mb-3" data-toggle="modal" data-target="#ProjectModal"><ion-icon name="add-outline"></ion-icon> NUEVO PROYECTO</a>
                 </div>
         </div>
     </div>
 
     <div class="row">
 
-    	<div class="col-md-12">
-    		<div class="card-header">MIS PROYECTOS</div>
+    	<div class="col-md-12" style="margin-bottom: 20px;">
+    		<div class="card-header" style="border-radius:60px;">MIS PROYECTOS</div>
     	</div>
 
     	@foreach($projects as $project)

@@ -3,14 +3,10 @@
 @section('content')
 
 <div class="container">
-
     <div class="row justify-content-center">
-
         <div class="col-md-12">
-
             <div class="card">
-
-                <div class="card-header">MIS TAREAS</div>
+                <div class="card-header" >MIS TAREAS</div>
 
                 <div class="card-body">
                     <a href="{{ route('tareas.create')}}" class="btn btn-dark mb-3">Crear tarea</a>
@@ -20,6 +16,8 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Titulo</th>
+                                <td class="scope">User ID</td>
+                                <td class="scope">Usuario</td>
                                 <th scope="col">Fecha de entrega</th>
                                 <th scope="col">Descripcion</th>
                                 <th scope="col">Estado</th>
@@ -32,6 +30,8 @@
                             <tr>
                                 <th scope="row">{{ $task->id }}</th>
                                 <td>{{ $task->title }}</td>
+                                <td>{{ $task->user_id }}</td>
+                                <td>{{ $task->user->name }}</td>
                                 <td>{{ $task->deadline }}</td>
                                 <td>{{ $task->description }}</td>
                                 <td>
@@ -46,7 +46,6 @@
                                     <form method="POST" style="display: inline-block;" action="{{ route ('tareas.destroy', $task->id) }}">
                                         {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            
                                                 <button type="submit" class="btn btn-outline-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Delete">
                                                     <ion-icon name="trash-bin-outline"></ion-icon>
                                                 </button>
@@ -57,7 +56,7 @@
                                     </a>
 
                                     @if($task->is_complete == false)
-                                        <a href="{{ route('tareas.status', $task->id)}}" class="btn btn-outline-success btn-sm" data-toggle="tooltip" data-placement="top" title="Completar"><ion-icon name="checkmark-outline"></ion-icon></ion-icon></a>
+                                        <a href="{{ route('tareas.status', $task->id)}}" class="btn btn-outline-success btn-sm" data-toggle="tooltip" data-placement="top" title="Completar"><ion-icon name="checkmark-outline"></ion-icon></a>
                                     @endif
 
                                     

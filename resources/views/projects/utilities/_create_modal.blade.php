@@ -39,6 +39,23 @@
 	        </div>
 
 	        <div class="form-group">
+
+            <label for="exampleFormControlSelect1">Selecciona usuario</label>
+
+            @foreach($users as $user)
+
+            	<div class="form-check">
+            	<input class="form-check-input" type="checkbox" value="{{ $user->id }}" id="defaultCheck1" name="user_id[]">
+
+            		<label class="form-check-label" for="defaultCheck1">
+            			{{ $user->name }}
+            		</label>
+            		
+            @endforeach
+							</div>
+          </div>
+
+	        <div class="form-group">
 	        	<label for="">Description</label>
 	        	<textarea class="form-control" name="description" id="" cols="3" rows="5"></textarea>
 	        </div>

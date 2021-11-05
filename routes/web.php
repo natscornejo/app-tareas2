@@ -28,3 +28,4 @@ Route::resource('/proyectos', App\Http\Controllers\ProjectController::class);
 
 Route::get('cambiar-estado/{id}', 'App\Http\Controllers\TaskController@status')->name('tareas.status');
 
+Route::get('cambiar-estado/{id}', 'App\Http\Controllers\TaskController@status')->name('tareas.status');

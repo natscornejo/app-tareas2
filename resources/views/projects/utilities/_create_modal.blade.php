@@ -39,9 +39,7 @@
 	        </div>
 
 	        <div class="form-group">
-
             <label for="exampleFormControlSelect1">Selecciona usuario</label>
-
             @foreach($users as $user)
 
             	<div class="form-check">
@@ -50,7 +48,6 @@
             		<label class="form-check-label" for="defaultCheck1">
             			{{ $user->name }}
             		</label>
-            		
             @endforeach
 							</div>
           </div>

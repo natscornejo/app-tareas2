@@ -29,7 +29,6 @@ class ProjectController extends Controller
         //return view('projects.create');
     }
 
-
     public function store(Request $request)
     {
         
@@ -41,14 +40,13 @@ class ProjectController extends Controller
         $project->description = $request->description;
 
         $users = $request->user_id;
-        $project->users()->sync($request->user_id);
-        
         $project->save();
 
+        $project->users()->sync($request->user_id);
         
-        //Session:: flash ('nombre del mensaje', 'mensaje');
-        /*Session:: flash ('success', ' successfully');
-        */
+        Session:: flash ('nombre del mensaje', 'mensaje');
+        Session:: flash ('success', ' successfully');
+        
 
         return redirect()->back();
         return redirect()->back()->with('users', $users);
